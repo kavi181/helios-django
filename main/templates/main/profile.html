@@ -1,0 +1,23 @@
+{% extends 'main/base.html' %}
+{% block title %}My Profile | Helios{% endblock %}
+
+{% block content %}
+<section class="profile-section" style="max-width: 600px; margin: 3rem auto; background: #f9f9f9; padding: 2rem; border-radius: 12px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);">
+  <h2 style="text-align: center; color: #333;">Welcome, {{ user.username }}!</h2>
+  <hr style="margin: 1.5rem 0;">
+  <div style="line-height: 2; font-size: 1.1rem;">
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Username:</strong> {{ user.username }}</p>
+    <p><strong>Date Joined:</strong> {{ user.date_joined|date:"F j, Y" }}</p>
+    <!-- You can add more fields here from a custom profile model if needed -->
+  </div>
+
+  <form method="post" action="{% url 'logout' %}" style="text-align: center; margin-top: 2rem;">
+  {% csrf_token %}
+  <button type="submit" style="padding: 10px 20px; background-color: #ff6b6b; color: white; border: none; border-radius: 6px; font-weight: bold;">
+    Logout
+  </button>
+</form>
+
+</section>
+{% endblock %}

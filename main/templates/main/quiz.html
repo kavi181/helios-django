@@ -1,0 +1,21 @@
+<form method="post">
+  {% csrf_token %}
+
+  {% if questions %}
+    {% for q in questions %}
+      <div class="question-block" style="margin-bottom: 20px;">
+        <p><strong>Q{{ forloop.counter }}. {{ q.question }}</strong></p>
+
+        {% for opt in q.options %}
+          <label>
+            <input type="radio" name="q{{ forloop.parentloop.counter }}" value="{{ opt|first }}">
+            {{ opt }}
+          </label><br>
+        {% endfor %}
+      </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-primary">Submit</button>
+  {% else %}
+    <p style="color: red;"><em>No quiz questions available.</em></p>
+  {% endif %}
+</form>

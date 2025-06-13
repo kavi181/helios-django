@@ -1,0 +1,34 @@
+{% load static %}
+
+<header class="main-header">
+  <a href="{% url 'home' %}" class="brand d-flex align-items-center">
+    <img src="{% static 'images/helios-logo.png' %}" alt="Helios Logo" style="height: 75px; margin-right: 10px;">
+  </a>
+
+  <nav>
+    <ul>
+      <li><a href="{% url 'home' %}">Home</a></li>
+      <li><a href="{% url 'about' %}">About</a></li>
+      <li><a href="{% url 'participant' %}">Participant</a></li>
+      <li><a href="{% url 'contactus' %}">Contact Us</a></li>
+      <li><a href="#">Shop</a></li>
+      <li><a href="#">How to Use</a></li>
+
+      {% if user.is_authenticated %}
+        <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li>
+        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+          {% csrf_token %}
+          <button type="submit" style="background: none; border: none; color: inherit; font: inherit; cursor: pointer; padding: 0; margin: 0;">
+            <strong>Logout</strong>
+          </button>
+        </form>
+      </li>
+
+      {% else %}
+        <li><a href="{% url 'login' %}" class="login-btn">Login</a></li>
+      {% endif %}
+    </ul>
+  </nav>
+</header>

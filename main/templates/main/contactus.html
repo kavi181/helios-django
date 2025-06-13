@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Contact Us | HELIOS{% endblock %}
+
+{% block content %}
+<section class="contact-page">
+  <div class="container">
+    <h2 class="text-center">Hubungi Kami</h2>
+    <p class="text-center">Sila hubungi kami untuk sebarang pertanyaan atau maklum balas berkaitan HELIOS.</p>
+
+    <div class="contact-flex">
+      <!-- Contact Card -->
+      <div class="contact-card">
+        <h3>HELIOS Health Literacy Program</h3>
+        <p>Sebuah inisiatif pendidikan kesihatan untuk kanak-kanak dan remaja melalui platform digital.</p>
+        <hr>
+        <h4>Maklumat Perhubungan</h4>
+        <p><strong>📧 Emel:</strong><br> helios@michma.org.my</p>
+        <p><strong>📍 Alamat:</strong><br>
+          Kompleks A, Aras 3, Kementerian Kesihatan Malaysia,<br>
+          Putrajaya, 62590 Wilayah Persekutuan Putrajaya
+        </p>
+        <hr>
+        <h4>Bahagian Terlibat</h4>
+        <ul>
+          <li>Bahagian Pendidikan Kesihatan</li>
+          <li>Unit Prestasi Digital & Inovasi</li>
+          <li>Bahagian Teknologi Maklumat Kesihatan</li>
+        </ul>
+      </div>
+
+      <!-- Google Map -->
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15955.293292139376!2d101.68953665862752!3d2.9242445947482236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31cc49aaf5cb8883%3A0x7aeb8f6f28784a30!2sMinistry%20of%20Health%2C%20Putrajaya!5e0!3m2!1sen!2smy!4v1686249619175!5m2!1sen!2smy"
+          width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

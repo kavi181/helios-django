@@ -1,0 +1,53 @@
+
+{% extends 'main/base.html' %}
+{% block title %}Login | Helious{% endblock %}
+
+{% block content %}
+
+<section style="text-align:center;">
+    <br>
+    <br>
+    <h2>Login Page</h2>
+    {% if error %}
+    <p style="color: red;">{{ error }}</p>
+{% endif %}
+    <form method="post" action="{% url 'login' %}" style="max-width: 400px; margin: 0 auto;">
+        {% csrf_token %}
+        <div style="margin-bottom: 15px; text-align: left;">
+            <label>Email</label><br>
+            <input type="email" name="email" required style="width: 100%; padding: 10px;">
+        </div>
+        <div style="margin-bottom: 15px; text-align: left;">
+            <label>Password</label><br>
+            <input type="password" name="password" required style="width: 100%; padding: 10px;">
+        </div>
+        <div style="margin-bottom: 15px;">
+            {% if messages %}
+            {% for message in messages %}
+                <div style="background: #d4edda; color: #155724; padding: 10px; margin-bottom: 15px; border-radius: 6px; border: 1px solid #c3e6cb;">
+                {{ message }}
+                </div>
+            {% endfor %}
+            {% endif %}
+
+                <button type="submit" style="padding: 10px 20px; background-color: #64c2f0; border: none; font-weight: bold;">
+                Login
+            </button>
+        </div>
+        <div style="font-size: 14px;">
+            <a href="#">Forgot Password?</a> | <a href="/signup/">Sign Up</a>
+        </div>
+    </form>
+</section>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+{% endblock %}

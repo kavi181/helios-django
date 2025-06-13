@@ -1,0 +1,23 @@
+{% extends "main/base.html" %}
+{% block title %}Sign Up | Helios{% endblock %}
+
+{% block content %}
+<div class="signup-modal">
+  <div class="signup-box">
+    <h2>Create Account</h2>
+    <p>Step 1: Who is primarily going to use this content?</p>
+    
+    <div class="signup-options">
+      <a href="{% url 'signup_form' %}?type=child" class="signup-btn">
+        My Child<br><span>I'm a parent or guardian</span>
+      </a>
+      <a href="{% url 'signup_form' %}?type=teacher" class="signup-btn">
+        My Students<br><span>I'm a teacher</span>
+      </a>
+      <a href="{% url 'signup_form' %}?type=student" class="signup-btn">
+        Myself<br><span>I'm a student</span>
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

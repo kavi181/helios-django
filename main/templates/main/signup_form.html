@@ -1,0 +1,50 @@
+{% extends "main/base.html" %}
+{% block title %}Create Your Account | Helios{% endblock %}
+
+{% block content %}
+<div class="signup-form-container" style="max-width: 400px; margin: 3rem auto; padding: 2rem; background: #f9f9f9; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);">
+  <h2 style="text-align: center;">Create Your Account</h2>
+
+  <!-- Display messages -->
+  {% if messages %}
+    {% for message in messages %}
+      <div style="background-color: #ffe6e6; color: #cc0000; padding: 10px; border-radius: 6px; margin-bottom: 1rem; font-size: 0.95rem;">
+        {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+
+  <form method="post" action="{% url 'signup_form' %}">
+    {% csrf_token %}
+
+    {% if request.GET.type %}
+      <input type="hidden" name="account_type" value="{{ request.GET.type }}">
+      <p>Account Type: <strong>{{ request.GET.type|capfirst }}</strong></p>
+    {% endif %}
+
+    <div class="form-group" style="margin-bottom: 1rem;">
+      <label for="id_email">Email</label>
+      <input type="email" name="email" id="id_email" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    </div>
+
+    <div class="form-group" style="margin-bottom: 1rem;">
+      <label for="id_username">Username</label>
+      <input type="text" name="username" id="id_username" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    </div>
+
+    <div class="form-group" style="margin-bottom: 1rem;">
+      <label for="id_password1">Password</label>
+      <input type="password" name="password1" id="id_password1" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    </div>
+
+    <div class="form-group" style="margin-bottom: 1.5rem;">
+      <label for="id_password2">Confirm Password</label>
+      <input type="password" name="password2" id="id_password2" required style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px;">
+    </div>
+
+    <button type="submit" class="signup-submit-btn" style="width: 100%; padding: 10px; background-color: #4CAF50; color: white; font-weight: bold; border: none; border-radius: 4px;">
+      Sign Up
+    </button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>{% block title %}Helious{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'main/style.css' %}" />
+</head>
+<body>
+  {% include "main/includes/navbar.html" %}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  {% include "main/includes/footer.html" %}
+</body>
+</html>

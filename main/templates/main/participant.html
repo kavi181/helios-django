@@ -1,0 +1,60 @@
+{% extends "main/base.html" %}
+{% block title %}Consent Letter | HELIOS{% endblock %}
+{% load static %}
+
+{% block content %}
+<div class="consent-container">
+  <h2>HELIOS Program Participation Consent Letter</h2>
+  <p>Dear Participant / Parent / Guardian,</p>
+
+  <p>You are invited to participate in the <strong>HELIOS health literacy program</strong>, an interactive platform designed to help young people learn about health through engaging stories, animations, and games...</p>
+
+  <h3>Purpose of the Program</h3>
+  <p>HELIOS aims to enhance health knowledge, attitudes, and practices...</p>
+
+  <h3>What Participation Involves:</h3>
+  <ul>
+    <li>1. Registering your profile on the HELIOS platform.</li>
+    <li>2. Engaging with health literacy materials such as comic books, animations, and quizzes.</li>
+    <li>3. Completing periodic assessments to measure learning progress.</li>
+    <li>4. Updating your profile with relevant health-related information as prompted.</li>
+  </ul>
+
+  <h3>Voluntary Participation</h3>
+  <p>Participation is voluntary. You may choose to withdraw at any time without any penalty or loss of benefits.</p>
+
+  <h3>Confidentiality</h3>
+  <p>All personal and health-related information collected will be kept confidential and used only for educational and research purposes. Data will be securely stored and anonymized for reporting.
+</p>
+
+  <h3>Potential Risks and Benefits</h3>
+  <p>There are no known risks associated with participation. Benefits include improved health knowledge and contributing to research that may benefit others.
+</p>
+<br>
+
+  <hr>
+
+  <h3>Consent Statement</h3>
+
+  <h4>For Participants Under 18 Years Old:</h4>
+  <form class="consent-form">
+    <label>Child’s Name: <input type="text" name="child_name" required></label>
+    <label>Date of Birth: <input type="date" name="dob" required></label>
+    <label>Parent/Guardian Name: <input type="text" name="guardian_name" required></label>
+    <label>Relationship to Child: <input type="text" name="relationship" required></label>
+    <label>Signature: <input type="text" name="signature" required></label>
+    <label>Date: <input type="date" name="date" required></label>
+  </form>
+
+  <hr>
+
+  <h4>For Participants Aged 18 and Above:</h4>
+  <form class="consent-form">
+    <label>Participant Name: <input type="text" name="participant_name" required></label>
+    <label>Signature: <input type="text" name="participant_signature" required></label>
+    <label>Date: <input type="date" name="participant_date" required></label>
+  </form>
+
+  <p class="support-contact">For any questions, contact us at <a href="mailto:support@helios.com">support@helios.com</a></p>
+</div>
+{% endblock %}

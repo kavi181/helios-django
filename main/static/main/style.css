@@ -1,0 +1,802 @@
+/* 1. Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@300;400;600&display=swap');
+
+/* 2. Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Open Sans', sans-serif;
+  color: #333;
+  background: #fafafa;
+  line-height: 1.6;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+/* 3. Header & Navbar */
+header.main-header {
+  position: sticky;
+  top: 0;
+  background:  #B6eafa;
+  padding: 1rem 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+header .logo {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #000000;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+
+}
+header nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+header nav ul {
+  display: flex;
+  gap: 1.8rem;
+  align-items: center;
+}
+header nav a {
+  font-weight: 600;
+  color: #202020;
+  position: relative;
+  padding: 0.25rem;
+  transition: color 0.3s;
+}
+header nav a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #000000;
+  transition: width 0.3s;
+}
+header nav a:hover {
+  color: #000000;
+}
+header nav a:hover::after {
+  width: 100%;
+}
+.login-btn {
+  background-color: #ffffff;
+  color: #000;
+  padding: 8px 20px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  line-height: 1.5;
+  vertical-align: middle;
+  margin-left: 1rem; /* add spacing from last item */
+}
+
+.login-btn:hover {
+  background-color: #eeeeee;
+  transform: scale(1.05);
+}
+
+
+/* 4. Hero Section */
+.hero-complex {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4rem 5rem;
+  gap: 4rem;
+
+  background-image: url('/static/images/background.jpg'); /* ← replace with actual path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  color: white; /* optional, so text stands out */
+}
+
+
+
+/* Left side paragraph */
+.hero-complex .hero-left {
+  flex: 1;
+  text-align: left;
+}
+
+.hero-complex .hero-left .intro-text {
+  font-size: 1.5rem;
+  color: #000000;
+  max-width: 400px;
+}
+
+/* Right side heading + button */
+.hero-complex .hero-right {
+  flex: 1;
+  text-align: left;
+}
+
+.hero-complex .hero-right h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.4rem;        /* make it bigger */
+  font-weight: 800;         /* boldest */
+  line-height: 1.25;
+  color: #222;
+  margin: 0;
+  text-align: right;
+}
+
+
+
+
+.btn-learn {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  font-weight: 600;
+  color: #000000;
+  border: 2px solid #000000;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+.btn-learn:hover {
+  background: #0070f3;
+  color: #fff;
+}
+
+/* 4a. Vertical Tagline: WHO WE ARE */
+.hero-complex .tagline {
+  position: absolute;           /* remove from flow */
+  right: 2rem;                  /* align to right edge */
+  top: 50%;                     /* vertical center */
+  transform: translateY(-50%);
+  writing-mode: vertical-lr;     /* top→bottom */
+  text-orientation: upright;     /* keep letters upright */
+  white-space: nowrap;           /* no wrapping */
+  font-weight: 600;
+  letter-spacing: 0.2em;         /* space between letters */
+  color: #888;
+  margin: 0;
+}
+
+/* 5. Services Grid */
+.services-grid {
+  background: #f7faff;
+  padding: 5rem 4rem;
+  text-align: center;
+}
+.services-grid h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.25rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+.services-grid .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+.services-grid .item {
+  background: #fff;
+  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+.services-grid .item:hover {
+  transform: translateY(-8px);
+}
+.services-grid img {
+  width: 300px;
+  height: 150px;
+  margin-bottom: 1rem;
+}
+.services-grid p {
+  font-weight: 600;
+  color: #333;
+}
+
+/* 6. Contact Section */
+.contact-section {
+  background-color: #f5f9ff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.contact-container {
+  max-width: 700px;
+  margin: auto;
+  background: white;
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.contact-container h2 {
+  margin-bottom: 10px;
+  font-size: 2em;
+  color: #003366;
+}
+
+.contact-container p {
+  margin-bottom: 30px;
+  color: #555;
+}
+
+.form-grid {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.form-grid input {
+  flex: 1;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+textarea {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  resize: vertical;
+}
+
+button[type="submit"] {
+  background-color: #005bbb;
+  color: white;
+  padding: 12px 25px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #004699;
+}
+
+
+/* 7. Video Section */
+.video-section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.video-section video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1;
+}
+
+
+.video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-container video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  z-index: -1;
+}
+
+
+/* 8. Footer */
+footer {
+  background:#B6eafa;
+  padding: 2rem 4rem;
+  text-align: center;
+  color: #fff;
+  font-size: 0.9rem;
+}
+footer a {
+  color: #000000;
+  transition: color 0.3s;
+}
+footer p {
+  color: #000000;
+  transition: color 0.3s;
+}
+footer a:hover {
+  color: #0c0c0c;
+}
+
+/* 9. Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .hero-complex {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero-complex .tagline {
+    writing-mode: horizontal-tb;
+    margin: 0 auto 1rem;
+    position: relative;
+    transform: none;
+    right: auto;
+    top: auto;
+  }
+}
+@media (max-width: 768px) {
+  header nav ul {
+    display: none;   /* replace with mobile menu if needed */
+  }
+  .hero-complex {
+    padding: 2rem 1.5rem;
+  }
+  .services-grid,
+  .contact,
+  .video-section {
+    padding: 2.5rem 1.5rem;
+  }
+}
+/* 10. Collab */
+.collab-section {
+  padding: 5rem 4rem;
+  background: #f9f9f9;
+  text-align: center;
+}
+
+.collab-section h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  color: #222;
+}
+
+.collab-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.flip-card {
+  background-color: transparent;
+  width: 220px;
+  height: 260px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  backface-visibility: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-front {
+  background-color: #fff;
+}
+
+.flip-card-front img {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+}
+
+.flip-card-back {
+  background-color: #0070f3;
+  color: white;
+  transform: rotateY(180deg);
+  padding: 1rem;
+}
+/* 11 Sign up */
+
+.signup-modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 1rem;
+  background: #fefefe;
+  min-height: 100vh;
+}
+
+.signup-box {
+  background: #fff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  max-width: 450px;
+  width: 100%;
+}
+
+.signup-box h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+}
+
+.signup-options {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.signup-btn {
+  display: block;
+  padding: 1rem;
+  border: 2px solid #0070f3;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  color: #0070f3;
+  background: #fff;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.signup-btn span {
+  font-weight: normal;
+  display: block;
+  font-size: 0.875rem;
+  color: #555;
+}
+
+.signup-btn:hover {
+  background: #0070f3;
+  color: #fff;
+}
+
+
+/* 12. dashboard*/
+.carousel-box {
+    position: relative;
+    width: 90%;               /* Wider */
+    max-width: 1100px;
+    height: 300px;            
+    margin: 30px auto;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .carousel-image {
+    width: 100%;
+  height: 100%;
+  object-fit: contain;  /* change from 'cover' to 'contain' */
+  border-radius: 20px;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .carousel-btn.prev {
+    left: 10px;
+  }
+
+  .carousel-btn.next {
+    right: 10px;
+  }
+
+.dashboard-container {
+  text-align: center;
+  padding: 3rem 1rem;
+  background: #f9fcff;
+}
+
+.dashboard-title {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #222;
+}
+
+.dashboard-subtitle {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+/* 13. Book Grid */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  padding: 0 40px;
+}
+
+.book-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%; /* Let it fill the grid cell */
+}
+
+
+.book-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.book-card h3 {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+.read-btn {
+  display: inline-block;
+  background-color: #64c2f0;
+  color: white;
+  padding: 6px 14px;
+  font-size: 14px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  margin-top: 8px;
+}
+
+
+.read-btn:hover {
+  background-color: #4ca9d6;
+}
+
+/* 14. About Details */
+
+.about-container {
+  display: flex;
+  padding: 40px;
+  gap: 40px;
+  background-color: #fff;
+  font-family: 'Georgia', serif;
+}
+
+.about-main {
+  flex: 3;
+  max-width: 750px;
+}
+
+.about-main p {
+  line-height: 1.7;
+  margin-bottom: 1em;
+  text-align: justify;
+}
+
+.about-sidebar {
+  flex: 1;
+  background-color: #fafafa;
+  padding: 20px;
+  border-left: 2px solid #ddd;
+}
+
+.about-sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-sidebar li {
+  margin-bottom: 12px;
+}
+
+.about-sidebar a {
+  color: #b22222;
+  text-decoration: none;
+}
+
+.about-image {
+  width: 100%;
+  max-width: 400px;
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 20px;
+}
+
+blockquote {
+  background: #f9f9f9;
+  padding: 15px 20px;
+  border-left: 5px solid #ccc;
+  margin: 20px 0;
+  font-style: italic;
+}
+
+/* 15. Participant Section */
+.consent-container {
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.7;
+}
+
+.consent-container h2 {
+  text-align: center;
+  color: #003c57;
+}
+
+.consent-container h3 {
+  margin-top: 30px;
+  color: #444;
+}
+
+.consent-container ul {
+  margin-left: 20px;
+}
+
+.consent-form {
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+.consent-form label {
+  display: block;
+  margin-bottom: 15px;
+}
+
+.consent-form input[type="text"],
+.consent-form input[type="date"] {
+  width: 100%;
+  padding: 8px 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.support-contact {
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* 16. ContactUs*/
+.contact-page .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.contact-flex {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.contact-card {
+  flex: 1;
+  min-width: 350px;
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.05);
+}
+
+.contact-card h3 {
+  color: #003366;
+}
+
+.contact-card h4 {
+  margin-top: 20px;
+}
+
+.contact-card ul {
+  padding-left: 20px;
+}
+
+.contact-map {
+  flex: 1;
+  min-width: 350px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* 17. Signup  */
+.signup-form-container {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fff;
+}
+.form-group {
+  margin-bottom: 1rem;
+}
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.signup-submit-btn {
+  width: 100%;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #4CAF50;
+  color: #fff;
+  font-size: 1rem;
+}
