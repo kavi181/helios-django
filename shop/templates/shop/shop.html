@@ -1,0 +1,184 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-center mb-4">📚 Shop Our Books</h2>
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-4 justify-content-center">
+
+    <!-- Book 1 -->
+    <div class="col">
+      <div class="card shadow-sm text-center h-100">
+        <img src="{% static 'images/book1.png' %}" class="card-img-top book-cover" alt="DENUTRA">
+        <div class="card-body">
+          <h5 class="card-title">DENUTRA</h5>
+          <p><strong>eBook</strong> - RM9.90</p>
+          <div class="qty-controls mb-2">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-denutra', -1)">-</button>
+            <input type="text" id="ebook-denutra" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-denutra', 1)">+</button>
+          </div>
+          <p><strong>Softcover</strong> - RM29.90</p>
+          <div class="qty-controls">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-denutra', -1)">-</button>
+            <input type="text" id="soft-denutra" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-denutra', 1)">+</button>
+          </div>
+          <form method="POST" action="{% url 'add_to_cart' %}">
+  {% csrf_token %}
+  <input type="hidden" name="product_id" value="denutra">
+  <input type="hidden" name="title" value="DENUTRA">
+  <input type="hidden" name="qty_ebook" id="ebook-denutra-value">
+  <input type="hidden" name="qty_soft" id="soft-denutra-value">
+  <button type="submit" class="btn btn-primary mt-3" onclick="prepareQty('denutra')">Add to Cart</button>
+</form>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- Book 2 -->
+    <div class="col">
+      <div class="card shadow-sm text-center h-100">
+        <img src="{% static 'images/book2.png' %}" class="card-img-top book-cover" alt="X-SACKER">
+        <div class="card-body">
+          <h5 class="card-title">X-SACKER</h5>
+          <p><strong>eBook</strong> - RM9.90</p>
+          <div class="qty-controls mb-2">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-xsacker', -1)">-</button>
+            <input type="text" id="ebook-xsacker" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-xsacker', 1)">+</button>
+          </div>
+          <p><strong>Softcover</strong> - RM29.90</p>
+          <div class="qty-controls">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-xsacker', -1)">-</button>
+            <input type="text" id="soft-xsacker" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-xsacker', 1)">+</button>
+          </div>
+          <button class="btn btn-primary mt-3">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book 3 -->
+    <div class="col">
+      <div class="card shadow-sm text-center h-100">
+        <img src="{% static 'images/book3.png' %}" class="card-img-top book-cover" alt="TUBERKURA">
+        <div class="card-body">
+          <h5 class="card-title">TUBERKURA</h5>
+          <p><strong>eBook</strong> - RM9.90</p>
+          <div class="qty-controls mb-2">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-tuberkura', -1)">-</button>
+            <input type="text" id="ebook-tuberkura" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-tuberkura', 1)">+</button>
+          </div>
+          <p><strong>Softcover</strong> - RM29.90</p>
+          <div class="qty-controls">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-tuberkura', -1)">-</button>
+            <input type="text" id="soft-tuberkura" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-tuberkura', 1)">+</button>
+          </div>
+          <button class="btn btn-primary mt-3">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book 4 -->
+    <div class="col">
+      <div class="card shadow-sm text-center h-100">
+        <img src="{% static 'images/book4.png' %}" class="card-img-top book-cover" alt="OBESERONS">
+        <div class="card-body">
+          <h5 class="card-title">OBESERONS</h5>
+          <p><strong>eBook</strong> - RM9.90</p>
+          <div class="qty-controls mb-2">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-obeserons', -1)">-</button>
+            <input type="text" id="ebook-obeserons" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-obeserons', 1)">+</button>
+          </div>
+          <p><strong>Softcover</strong> - RM29.90</p>
+          <div class="qty-controls">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-obeserons', -1)">-</button>
+            <input type="text" id="soft-obeserons" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-obeserons', 1)">+</button>
+          </div>
+          <button class="btn btn-primary mt-3">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book 5 -->
+    <div class="col">
+      <div class="card shadow-sm text-center h-100">
+        <img src="{% static 'images/book5.png' %}" class="card-img-top book-cover" alt="SALMONESTER">
+        <div class="card-body">
+          <h5 class="card-title">SALMONESTER</h5>
+          <p><strong>eBook</strong> - RM9.90</p>
+          <div class="qty-controls mb-2">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-salmonester', -1)">-</button>
+            <input type="text" id="ebook-salmonester" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-salmonester', 1)">+</button>
+          </div>
+          <p><strong>Softcover</strong> - RM29.90</p>
+          <div class="qty-controls">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-salmonester', -1)">-</button>
+            <input type="text" id="soft-salmonester" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-salmonester', 1)">+</button>
+          </div>
+          <button class="btn btn-primary mt-3">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book 6 -->
+    <div class="col">
+      <div class="card shadow-sm text-center h-100">
+        <img src="{% static 'images/book6.png' %}" class="card-img-top book-cover" alt="DHUMATOR">
+        <div class="card-body">
+          <h5 class="card-title">DHUMATOR</h5>
+          <p><strong>eBook</strong> - RM9.90</p>
+          <div class="qty-controls mb-2">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-dhumator', -1)">-</button>
+            <input type="text" id="ebook-dhumator" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('ebook-dhumator', 1)">+</button>
+          </div>
+          <p><strong>Softcover</strong> - RM29.90</p>
+          <div class="qty-controls">
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-dhumator', -1)">-</button>
+            <input type="text" id="soft-dhumator" value="0" class="form-control text-center qty-input" readonly>
+            <button class="btn btn-outline-secondary btn-sm" onclick="adjustQty('soft-dhumator', 1)">+</button>
+          </div>
+          <button class="btn btn-primary mt-3">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  function adjustQty(id, amount) {
+    const input = document.getElementById(id);
+    let current = parseInt(input.value);
+    if (isNaN(current)) current = 0;
+    let updated = current + amount;
+    if (updated < 0) updated = 0;
+    input.value = updated;
+  }
+</script>
+<script>
+  function adjustQty(id, amount) {
+    const input = document.getElementById(id);
+    let current = parseInt(input.value);
+    if (isNaN(current)) current = 0;
+    let updated = current + amount;
+    if (updated < 0) updated = 0;
+    input.value = updated;
+  }
+
+  function prepareQty(book) {
+    document.getElementById(`ebook-${book}-value`).value = document.getElementById(`ebook-${book}`).value;
+    document.getElementById(`soft-${book}-value`).value = document.getElementById(`soft-${book}`).value;
+  }
+</script>
+
+{% endblock %}

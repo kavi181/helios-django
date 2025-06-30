@@ -1,0 +1,56 @@
+{% extends "main/base.html" %}
+{% load static %}
+{% block title %}Reading - {{ book.title }}{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div style="margin-bottom: 20px; text-align: center;">
+    <a href="{% url 'read_scroll' slug %}" class="btn btn-info" style="margin-right: 10px;">📖 Scroll Mode</a>
+    <a href="{% url 'read_page' slug 1 %}" class="btn btn-secondary">📄 Page by Page</a>
+  </div>
+
+  <h2 class="mb-4 text-center">{{ book.title }}</h2>
+
+  <div class="comic-viewer d-flex flex-column align-items-center">
+    {% for i in page_numbers %}
+      <img src="{% static 'book_pages/' %}{{ slug }}/page{{ i }}.jpg" class="mb-4" style="width: 100%; max-width: 800px;">
+    {% endfor %}
+  </div>
+
+  {% if user_progress.has_read %}
+    <div class="alert alert-success mt-4">
+      ✅ You have read this book!
+      {% if not user_progress.purchased %}
+        <br>
+        <a href="{% url 'shop' %}" class="btn btn-outline-primary btn-sm mt-2">
+          🛒 Want to read more? Purchase full access in the shop.
+        </a>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+<!-- 🔔 Purchase Modal -->
+{% if user_progress.has_read and not user_progress.purchased %}
+<div class="modal fade" id="purchaseModal" tabindex="-1" aria-labelledby="purchaseModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content rounded-4">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="purchaseModalLabel">🎉 You've read this book!</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        You’ve completed this book. To unlock all pages and continue reading, please purchase full access.
+      </div>
+      <div class="modal-footer">
+        <a href="{% url 'shop' %}" class="btn btn-primary w-100">
+          🛒 Go to Shop
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{%

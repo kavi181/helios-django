@@ -1,0 +1,12 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}Reading {{ book.title }} (Scroll Mode){% endblock %}
+
+{% block content %}
+<div class="scroll-reader-container">
+  <h2>{{ book.title }} - Scroll Mode</h2>
+  {% for page in pages %}
+    <img src="{% static page %}" class="book-page" style="width: 100%; margin-bottom: 20px;" />
+  {% endfor %}
+</div>
+{% endblock %}

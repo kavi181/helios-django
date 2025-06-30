@@ -1,0 +1,28 @@
+{% extends 'main/base.html' %}
+{% block title %}Denutra: Dengue Quiz{% endblock %}
+
+{% block content %}
+<div style="max-width: 700px; margin: 0 auto; padding: 2rem;">
+  <h2>Denutra: Dengue Quiz</h2>
+
+  {% if questions %}
+    <form method="post">
+      {% csrf_token %}
+      {% for q in questions %}
+        <div style="margin-bottom: 1.5rem;">
+          <p><strong>Question {{ forloop.counter }}:</strong> {{ q.question }}</p>
+          {% for choice in q.choices %}
+            <label style="display: block; margin-left: 1rem;">
+              <input type="radio" name="q{{ forloop.parentloop.counter0 }}" value="{{ forloop.counter0 }}">
+              {{ choice }}
+            </label>
+          {% endfor %}
+        </div>
+      {% endfor %}
+      <button type="submit">Submit</button>
+    </form>
+  {% else %}
+    <p style="color: red;">No quiz questions available.</p>
+  {% endif %}
+</div>
+{% endblock %}

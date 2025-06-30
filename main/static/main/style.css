@@ -51,13 +51,17 @@ header nav ul {
   gap: 1.8rem;
   align-items: center;
 }
+/* Remove Bootstrap underline and style nav links */
 header nav a {
+  font-family: 'Open Sans', sans-serif;
   font-weight: 600;
-  color: #202020;
+  font-size: 1rem;
+  color: #000 !important;
+  text-decoration: none !important;
   position: relative;
-  padding: 0.25rem;
-  transition: color 0.3s;
 }
+
+/* Custom black underline effect on hover */
 header nav a::after {
   content: '';
   position: absolute;
@@ -65,15 +69,24 @@ header nav a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background: #000000;
-  transition: width 0.3s;
+  background: #000;
+  transition: width 0.3s ease;
 }
-header nav a:hover {
-  color: #000000;
-}
+
 header nav a:hover::after {
   width: 100%;
 }
+
+/* Ensure hover text color is black */
+header nav a:hover {
+  color: #000 !important;
+}
+
+/* Prevent persistent underline on active item */
+header nav a.active::after {
+  width: 0 !important;
+}
+
 .login-btn {
   background-color: #ffffff;
   color: #000;
@@ -105,12 +118,26 @@ header nav a:hover::after {
   padding: 4rem 5rem;
   gap: 4rem;
 
-  background-image: url('/static/images/background.jpg'); /* ← replace with actual path */
+  /*background-image: url('/static/images/background2.jpg'); */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
-  color: white; /* optional, so text stands out */
+  color: white; 
+}
+.background1 {
+  background: url('/static/images/background1.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.background2 {
+  background: url('/static/images/background2.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+.background3 {
+  background: url('/static/images/background3.jpg') no-repeat center center;
+  background-size: cover;
 }
 
 
@@ -671,6 +698,33 @@ blockquote {
   margin: 20px 0;
   font-style: italic;
 }
+.info-section {
+  margin: 3rem 0;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.section-title {
+  font-size: 1.6rem;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+.subsection-title {
+  font-size: 1.4rem;
+  margin-top: 2rem;
+  color: #444;
+}
+
+.justification-list {
+  padding-left: 1.2rem;
+  margin-top: 0.8rem;
+}
+
+.justification-list li {
+  margin-bottom: 0.6rem;
+  line-height: 1.6;
+}
 
 /* 15. Participant Section */
 .consent-container {
@@ -800,3 +854,51 @@ blockquote {
   color: #fff;
   font-size: 1rem;
 }
+/* 18. Quiz Section */
+.quiz-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+.question {
+  margin-bottom: 20px;
+}
+/* Book */
+.book-cover {
+  width: 140px;
+  height: 190px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 0 auto;
+  display: block;
+}
+
+.book-card {
+  min-width: 180px;
+  max-width: 200px;
+}
+
+.card-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.qty-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin: 5px 0;
+}
+
+.qty-controls input {
+  width: 40px;
+  text-align: center;
+}
+
+  

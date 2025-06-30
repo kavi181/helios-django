@@ -3,6 +3,8 @@
 {% block title %}Dashboard | Helios{% endblock %}
 
 {% block content %}
+
+<!-- 📽 Carousel -->
 <div class="carousel-box">
   <div class="carousel-container" id="carousel">
     <img src="{% static 'images/banner1.jpg' %}" class="carousel-image" alt="Poster 1">
@@ -16,56 +18,32 @@
   <button class="carousel-btn next" onclick="moveSlide(1)">&#10095;</button>
 </div>
 
+<!-- 📚 Book Grid -->
 <div class="dashboard-container">
-  <h1 class="dashboard-title">Welcome to Your Dashboard</h1>
+  <h1 class="dashboard-title">Welcome to Your Book</h1>
   <p class="dashboard-subtitle">Select a book or activity to begin your learning journey!</p>
+<p style="color: red;">Book count: {{ unlocked_books|length }}</p>
 
   <div class="book-grid">
+    {% for book, unlocked in unlocked_books %}
     <div class="book-card">
-      <img src="{% static 'images/book1.png' %}" alt="">
-      <h3>DENUTRA : DENGUE</h3>
-    <a href="{% static 'pdf/denutra.pdf' %}" target="_blank" class="read-btn">Start Reading</a>
-<a href="{% url 'quiz' 'denutra' %}" class="read-btn" style="margin-top: 5px; background-color: orange;">Take Quiz</a>
+      <img src="{% static book.image_path %}" alt="{{ book.title }}">
+      <h3>{{ book.title }}</h3>
 
+      {% if unlocked %}
+        <a href="{% url 'read_book' book.slug %}" class="read-btn">Start Reading</a>
+        {% if book.has_quiz %}
+          <a href="{% url 'quiz' book.slug %}" class="read-btn" style="margin-top: 5px; background-color: orange;">Take Quiz</a>
+        {% endif %}
+      {% else %}
+        <button class="read-btn" style="background-color: grey;" disabled>🔒 Locked</button>
+      {% endif %}
     </div>
-    <div class="book-card">
-      <img src="{% static 'images/book2.png' %}" alt="">
-      <h3>X-SACKER : HFMD</h3>
-      <a href="#" class="read-btn">Start Reading</a>
-    </div>
-     <div class="book-card">
-      <img src="{% static 'images/book3.png' %}" alt="">
-      <h3>TUBERKURA : TB</h3>
-      <a href="#" class="read-btn">Start Reading</a>
-    </div>
-     <div class="book-card">
-      <img src="{% static 'images/book4.png' %}" alt="">
-      <h3>OBESERONS : OBESITY</h3>
-      <a href="#" class="read-btn">Start Reading</a>
-    </div>
-     <div class="book-card">
-      <img src="{% static 'images/book5.png' %}" alt="">
-      <h3>SALMONESTER : FOOD POISONING </h3>
-      <a href="#" class="read-btn">Start Reading</a>
-    </div>
-     <div class="book-card">
-      <img src="{% static 'images/book6.png' %}" alt=" ">
-      <h3>DHUMATOR : SMOKING</h3>
-      <a href="#" class="read-btn">Start Reading</a>
-    </div>
-    <div class="book-card">
-      <img src="{% static 'images/book7.png' %}" alt="">
-      <h3>COMING SOON  </h3>
-      <a href="#" class="read-btn">Start Reading</a>
-    </div>
-     <div class="book-card">
-      <img src="" alt="">
-      <h3>COMING SOON</h3>
-      <a href="#" class="read-btn">Start Reading</a>
-    </div>
+    {% endfor %}
   </div>
 </div>
 
+<!-- 🎞 Carousel Logic -->
 <script>
   let index = 0;
   const slides = document.querySelectorAll('.carousel-image');
@@ -81,7 +59,7 @@
     showSlide(index + step);
   }
 
-  setInterval(() => moveSlide(1), 5000); // Auto slide every 5s
+  setInterval(() => moveSlide(1), 5000);
 </script>
 
 {% endblock %}

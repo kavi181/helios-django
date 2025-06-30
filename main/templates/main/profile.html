@@ -9,7 +9,20 @@
     <p><strong>Email:</strong> {{ user.email }}</p>
     <p><strong>Username:</strong> {{ user.username }}</p>
     <p><strong>Date Joined:</strong> {{ user.date_joined|date:"F j, Y" }}</p>
-    <!-- You can add more fields here from a custom profile model if needed -->
+
+    
+ <form method="post" style="margin-top: 2rem;">
+  {% csrf_token %}
+  <label for="background_choice" ><strong>Choose Background:</strong></label><br>
+  <select name="background_choice" id="background_choice"  style="padding: 12px 16px; font-size: 1rem; border-radius: 8px; width: 220px; margin-right: 15px;">>
+    <option value="background1" {% if user.background_choice == 'background1' %}selected{% endif %}>Background 1</option>
+    <option value="background2" {% if user.background_choice == 'background2' %}selected{% endif %}>Background 2</option>
+    <option value="background3" {% if user.background_choice == 'background3' %}selected{% endif %}>Background 3</option>
+  </select>
+  <button type="submit">Save Background</button>
+</form>
+
+
   </div>
 
   <form method="post" action="{% url 'logout' %}" style="text-align: center; margin-top: 2rem;">

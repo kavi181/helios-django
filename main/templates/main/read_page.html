@@ -1,0 +1,31 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}{{ book.title }} - Page {{ page_number }}{% endblock %}
+
+{% block content %}
+<div class="container py-4 text-center">
+
+  <h2>{{ book.title }} - Page {{ page_number }} / {{ total_pages }}</h2>
+
+  <div style="margin-bottom: 20px;">
+    <a href="{% url 'read_book' book.slug %}" class="btn btn-outline-secondary">📜 Switch to Scroll Mode</a>
+  </div>
+
+  <div class="my-4">
+<img src="{% static image_path %}" alt="Page {{ page_number }}" style="width: 100%; max-width: 700px; height: auto; display: block; margin: 0 auto;">
+  </div>
+
+  <div class="d-flex justify-content-between">
+    {% if page_number > 1 %}
+    <a href="{% url 'read_page' slug=slug page_number=page_number|add:"-1" %}" class="btn btn-primary">← Previous</a>
+    {% else %}
+    <span></span>
+    {% endif %}
+
+    {% if page_number < total_pages %}
+    <a href="{% url 'read_page' slug=slug page_number=page_number|add:"1" %}" class="btn btn-primary">Next →</a>
+    {% endif %}
+  </div>
+
+</div>
+{% endblock %}

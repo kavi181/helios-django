@@ -1,0 +1,55 @@
+{% extends "main/base.html" %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-center mb-4">🛒 Your Cart</h2>
+
+  {% if cart %}
+    <form method="POST" action="{% url 'update_cart' %}">
+      {% csrf_token %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>eBook Qty</th>
+            <th>Softcover Qty</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in cart %}
+          <tr>
+            <td>{{ item.title }}</td>
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <button type="submit" name="action" value="dec_ebook_{{ forloop.counter0 }}" class="btn btn-sm btn-outline-danger" style="padding: 3px 8px; font-size: 0.80rem;">-</button>
+                <span>{{ item.qty_ebook }}</span>
+              </div>
+            </td>
+            <td>
+              <div class="d-flex align-items-center gap-2">
+                <button type="submit" name="action" value="dec_soft_{{ forloop.counter0 }}" class="btn btn-sm btn-outline-danger" style="padding: 3px 8px; font-size: 0.80rem;">-</button>
+                <span>{{ item.qty_soft }}</span>
+              </div>
+            </td>
+          </tr>
+          <input type="hidden" name="product_id_{{ forloop.counter0 }}" value="{{ item.title }}">
+          {% endfor %}
+        </tbody>
+      </table>
+    </form>
+    <div class="text-end">
+      <a href="https://buy.stripe.com/test_3cIeVf0A144C0XdgVy0kE00" class="btn btn-success">Proceed to Payment</a>
+    </div>
+  {% else %}
+    <p class="text-center">Your cart is empty.</p>
+  {% endif %}
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% endblock %}

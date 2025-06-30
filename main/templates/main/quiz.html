@@ -1,21 +1,58 @@
-<form method="post">
-  {% csrf_token %}
+{% extends 'main/base.html' %}
+{% block title %}Quiz - {{ book_title }}{% endblock %}
+
+{% block content %}
+<div class="container py-4" style="max-width: 800px; margin: 0 auto;">
+  <h2>{{ book_title }} Quiz</h2>
+
+  {% if score is not None %}
+    <div class="alert alert-info mt-3">
+      ✅ Your score: <strong>{{ score }}/{{ questions|length }}</strong> ({{ percent|floatformat:0 }}%)
+    </div>
+
+  {% if completed %}
+  <div class="alert alert-success mt-3">
+    🎉 You passed the quiz! The next book is now unlocked.
+  </div>
+
+  {% if next_book %}
+  <div class="text-center mt-3">
+    <a href="{% url 'read_book' slug=next_book.slug %}" class="btn btn-success">
+      👉 Start Reading {{ next_book.title }}
+    </a>
+  </div>
+  {% endif %}
+    {% elif attempts >= 3 %}
+      <div class="alert alert-danger">
+        ❌ You have used all 3 attempts. Try again later.
+      </div>
+    {% else %}
+      <div class="alert alert-warning">
+        ❌ You didn’t reach 90%. Attempts left: <strong>{{ remaining_attempts }}</strong>
+      </div>
+    {% endif %}
+  {% endif %}
 
   {% if questions %}
-    {% for q in questions %}
-      <div class="question-block" style="margin-bottom: 20px;">
-        <p><strong>Q{{ forloop.counter }}. {{ q.question }}</strong></p>
-
-        {% for opt in q.options %}
-          <label>
-            <input type="radio" name="q{{ forloop.parentloop.counter }}" value="{{ opt|first }}">
-            {{ opt }}
-          </label><br>
+    {% if show_quiz_form %}
+      <form method="post">
+        {% csrf_token %}
+        {% for q in questions %}
+          <div class="question-block mb-3">
+            <p><strong>Q{{ forloop.counter }}. {{ q.question }}</strong></p>
+            {% for opt in q.choices %}
+              <label class="d-block">
+                <input type="radio" name="q{{ forloop.parentloop.counter }}" value="{{ opt|first }}" required>
+                {{ opt }}
+              </label>
+            {% endfor %}
+          </div>
         {% endfor %}
-      </div>
-    {% endfor %}
-    <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    {% endif %}
   {% else %}
-    <p style="color: red;"><em>No quiz questions available.</em></p>
+    <p class="text-danger"><em>No quiz questions available.</em></p>
   {% endif %}
-</form>
+</div>
+{% endblock %}
