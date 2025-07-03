@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+{% load static %}
+{% block title %}{{ book.title }} - Page {{ page_number }}{% endblock %}
+
+<h2>🧠 Locally Generated Comic Quiz for {{ slug }}</h2>
+
+{% for item in quiz_data %}
+  <div style="margin-bottom: 40px;">
+    <h4>📖 Page {{ item.page }}</h4>
+    <p><strong>Caption:</strong> {{ item.caption }}</p>
+    <pre>{{ item.question }}</pre>
+  </div>
+{% endfor %}

@@ -167,8 +167,7 @@ def quiz(request, slug):
     attempts = request.session['attempts']
     remaining_attempts = 3 - attempts
 
-    # ✅ Initialize next_book    
-    next_book = None
+    
     if request.method == 'POST':
         score = 0
         for idx, q in enumerate(questions, 1):
@@ -206,7 +205,7 @@ def quiz(request, slug):
         'attempts': attempts,
         'remaining_attempts': remaining_attempts,
         'show_quiz_form': show_quiz_form,
-        'next_book': next_book,
+        
     })
 
 from django.views.decorators.http import require_POST
