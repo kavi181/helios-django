@@ -1,4 +1,6 @@
-﻿annotated-types==0.7.0
+setuptools>=65.0.0
+wheel>=0.38.4
+annotated-types==0.7.0
 anyio==4.9.0
 asgiref==3.8.1
 beautifulsoup4==4.9.3
@@ -69,5 +71,3 @@ tzdata==2024.1
 urllib3==1.26.18
 Werkzeug==3.0.3
 whois==0.9.13
-setuptools>=65.0.0
-wheel>=0.38.4
