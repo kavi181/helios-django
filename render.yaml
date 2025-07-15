@@ -1,10 +1,9 @@
 services:
   - type: web
     name: helios-app
-    env: python
-    pythonVersion: 3.10
-    buildCommand: PIP_NO_BUILD_ISOLATION=0 pip install --no-cache-dir -r requirements.txt
-    startCommand: gunicorn helios.wsgi:application
+    env: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: DJANGO_SETTINGS_MODULE
         value: helios.settings
